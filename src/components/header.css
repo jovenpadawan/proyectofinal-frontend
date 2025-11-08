@@ -1,0 +1,17 @@
+.headerContainer {
+	width: 100%;
+    height: auto;
+	padding: 5px;
+}
+
+.imgContainer {
+    width: 75px;
+    height: 75px;
+    box-shadow: 30px 30px 30px #dda0dd;
+}
+
+h1{
+    font-family: 'Times New Roman', Times, serif;
+    color: #ae41e1;
+    font-weight: bold;
+}
