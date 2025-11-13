@@ -1,14 +1,20 @@
 import './components/body.css';
-import Header from './components/Header';
-import TagMain from './components/tagMain';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Inicio from './components/Inicio';
+import Header from './components/header';
+import TagMain from './components/TagMain';
+import GameForm from './components/GameForm';
 
 function App() {
 
   return (  
-    <div>
+    <Router>
       <Header />
-      <TagMain />
-    </div>
+      <Routes>
+        <Route path="/" element={<TagMain />} />
+        <Route path="/agregar-juego" element={<GameForm />} />
+      </Routes>
+    </Router>
   )
 }
 

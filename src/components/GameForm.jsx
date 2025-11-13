@@ -1,4 +1,3 @@
-// ...existing code...
 import { useState } from "react";
 import "./gameform.css";
 
@@ -70,7 +69,7 @@ function GameForm() {
         <input type="text" name="imagenPortada" placeholder="URL de la imagen del juego" value={formData.imagenPortada} onChange={handleChange} />
 
         <div className="toggleContainer">
-          <span>¿Completado?</span>
+          <span>¿Ya completaste este juego?</span>
           <div
             className={`toggleSwitch ${formData.completado ? "active" : ""}`}
             onClick={handleToggle}

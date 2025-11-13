@@ -1,14 +1,10 @@
-
 .headerContainer {
     display: flex;
-    align-items: flex-start;
-    gap: 15px;
-    margin: 0;
-    padding: 0;
-	width: 100%;
-    height: auto;
-	padding: 5px;
+    align-items: center;
+    padding: 15px;
     background-color: #6fdeff;
+    box-shadow: 0 0 50px #2b7890;
+    position: relative;
 }
 
 .imgContainer {
@@ -17,24 +13,74 @@
     box-shadow: 10px 0px 20px #106d6a;
 }
 
-h1{
+h1 {
     font-family: 'Times New Roman', Times, serif;
     color: #4941e1;
     font-weight: bold;
 }
 
-.headerMenu {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+.menuButton {
+    background: none;
+    border: none;
+    font-size: 2.3rem;
+    color: #ffffff;
+    cursor: pointer;
     margin-left: auto;
+    padding: 10px 15px;
+    z-index: 1000;
 }
 
-.headerButtomMenu{
-    background: #6fdeff;
-    border-radius: 50%;
-    padding: 10px;
-    font-size: 24px;
-    border: none;
-    cursor: pointer;
+/* Overlay cuando el menú está abierto */
+.menuOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 850;
+    display: none;
+}
+
+.menuOverlay.active {
+    display: block;
+}
+
+/* Menú deslizante */
+.menuDeslizante {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 250px;
+    height: 100vh;
+    background: #1f2937;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: right 0.4s ease;
+    box-shadow: -6px 0 20px rgba(0,0,0,0.4);
+    z-index: 900;
+    overflow-y: auto;
+}
+
+.menuActivo {
+    right: 0;
+}
+
+.menuDeslizante a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: color 0.2s ease;
+}
+
+.menuDeslizante a:hover {
+    color: #0080ff;
+}
+
+body.menuOpen {
+    overflow: hidden;
 }

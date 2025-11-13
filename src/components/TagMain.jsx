@@ -1,12 +1,11 @@
 import './tagmain.css';
-import GameForm from './GameForm';
-import './gameform.css';
+import logo from '../assets/images/gmLogo.jpeg';
 
 function TagMain() {
     return(
         <div className='mainStyles'>
             <main className='gameContainer'>
-                <GameForm />
+                <img src={logo}></img>
             </main>
         </div>
     );
