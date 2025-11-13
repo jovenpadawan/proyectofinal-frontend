@@ -26,7 +26,6 @@ function GameForm() {
     e.preventDefault();
 
     try {
-      // si quieres enviar anoLanzamiento como número:
       const payload = { ...formData, anoLanzamiento: Number(formData.anoLanzamiento) || null };
 
       const response = await fetch("http://localhost:3000/api/juegos", {
