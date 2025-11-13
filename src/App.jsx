@@ -1,12 +1,13 @@
-import { useState } from 'react'
-import './App.css'
+import './components/body.css';
+import Header from './components/Header';
+import TagMain from './components/tagMain';
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
+  return (  
     <div>
-      <H1>GameTracker</H1>
+      <Header />
+      <TagMain />
     </div>
   )
 }

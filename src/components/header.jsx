@@ -1,10 +1,13 @@
 import './header.css';
+import logo from '../assets/images/gmLogo.jpeg';
 
-export default function header() {
+function Header() {
     return (
         <header className='headerContainer'>
-            <img className='imgContainer' src='./sources/images/gmLogo.png'></img>
-            <h1>GameTraking Winnian</h1>
+            <img className='imgContainer' src={logo}></img>
+            <h1>GameTraker Winnian</h1>
         </header>
     );
 }
+
+export default Header

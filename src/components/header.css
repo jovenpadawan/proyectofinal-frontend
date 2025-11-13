@@ -1,17 +1,24 @@
+
 .headerContainer {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
 	width: 100%;
     height: auto;
 	padding: 5px;
+    background-color: #6fdeff;
 }
 
 .imgContainer {
-    width: 75px;
+    width: 200px;
     height: 75px;
-    box-shadow: 30px 30px 30px #dda0dd;
+    box-shadow: 10px 0px 20px #106d6a;
 }
 
 h1{
     font-family: 'Times New Roman', Times, serif;
-    color: #ae41e1;
+    color: #4941e1;
     font-weight: bold;
 }

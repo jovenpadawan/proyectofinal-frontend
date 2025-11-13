@@ -1,0 +1,100 @@
+/*Contenedor principal*/
+.gameForm {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: linear-gradient(160deg, #d6e1f8, #8fd3ee);
+  border-radius: 1rem;
+  box-shadow: 0 0 15px rgba(21, 235, 250, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: white;
+}
+
+/*Ediciones del contenedor*/
+.gameForm h2 {
+  text-align: center;
+  color: #3715fa;
+  text-shadow: 0 0 10px #298494;
+}
+
+.gameForm input,
+.gameForm textarea {
+  background-color: #031234;
+  border: 1px solid #1569fa;
+  border-radius: 15px;
+  padding: 0.6rem;
+  color: white;
+  font-size: 1rem;
+  resize: none;
+}
+
+.gameForm input:focus,
+.gameForm textarea:focus {
+  outline: none;
+  box-shadow: 0 0 8px #1571fa;
+}
+
+/* Boton de completado */
+.toggleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background-color: #031234;
+  padding: 0.7rem 1rem;
+  border-radius: 0.6rem;
+  border: 1px solid #15e7fa;
+}
+
+.toggleContainer span {
+  font-weight: 500;
+  color: #15c8fa;
+}
+
+.toggleSwitch {
+  width: 50px;
+  height: 25px;
+  background-color: #555;
+  border-radius: 30px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+
+.toggleSwitch .slider {
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: transform 0.5s ease;
+}
+
+/* Activo */
+.toggleSwitch.active {
+  background-color: #15e3fa;
+}
+
+.toggleSwitch.active .slider {
+  transform: translateX(25px);
+}
+
+.gameForm button {
+  background: #155afa;
+  color: #bfe3f1;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.gameForm button:hover {
+  background: #2473fb;
+  box-shadow: 0 0 10px #15ebfa;
+}
