@@ -1,7 +1,7 @@
 html, body {
     margin: 0;
-    height: 150vh;
-    background: linear-gradient(#66cbea, #477d9f);
+    height: 200vh;
+    background: linear-gradient(#fdfeff, #a6c8dd);
 }
 
 .gamesContainer {

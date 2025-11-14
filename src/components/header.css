@@ -2,15 +2,16 @@
     display: flex;
     align-items: center;
     padding: 15px;
-    background-color: #6fdeff;
-    box-shadow: 0 0 50px #2b7890;
+    background-color: #effafd;
+    box-shadow: 0 0 50px #9be8ff;
     position: relative;
+    gap: 20px;
 }
 
 .imgContainer {
     width: 200px;
     height: 75px;
-    box-shadow: 10px 0px 20px #106d6a;
+    box-shadow: 10px 0px 20px #24fcf4;
 }
 
 h1 {
@@ -23,7 +24,7 @@ h1 {
     background: none;
     border: none;
     font-size: 2.3rem;
-    color: #ffffff;
+    color: #343333;
     cursor: pointer;
     margin-left: auto;
     padding: 10px 15px;
@@ -53,13 +54,13 @@ h1 {
     right: -300px;
     width: 250px;
     height: 100vh;
-    background: #1f2937;
+    background: #adb7c5;
     padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 20px;
     transition: right 0.4s ease;
-    box-shadow: -6px 0 20px rgba(0,0,0,0.4);
+    box-shadow: -6px 0 20px rgba(15, 15, 15, 0.4);
     z-index: 900;
     overflow-y: auto;
 }
@@ -69,7 +70,7 @@ h1 {
 }
 
 .menuDeslizante a {
-    color: white;
+    color: rgb(0, 0, 0);
     text-decoration: none;
     font-size: 1.2rem;
     padding: 12px 0;
@@ -78,7 +79,7 @@ h1 {
 }
 
 .menuDeslizante a:hover {
-    color: #0080ff;
+    color: #4f5152;
 }
 
 body.menuOpen {

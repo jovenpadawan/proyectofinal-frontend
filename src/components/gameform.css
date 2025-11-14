@@ -15,17 +15,17 @@
 /*Ediciones del contenedor*/
 .gameForm h2 {
   text-align: center;
-  color: #3715fa;
+  color: #23222a;
   text-shadow: 0 0 10px #298494;
 }
 
 .gameForm input,
 .gameForm textarea {
-  background-color: #031234;
-  border: 1px solid #1569fa;
+  background-color: #f0f0f0;
+  border: 1px solid #96bbfa;
   border-radius: 15px;
   padding: 0.6rem;
-  color: white;
+  color: rgb(25, 24, 24);
   font-size: 1rem;
   resize: none;
 }
@@ -33,7 +33,7 @@
 .gameForm input:focus,
 .gameForm textarea:focus {
   outline: none;
-  box-shadow: 0 0 8px #1571fa;
+  box-shadow: 0 0 8px #555e6c;
 }
 
 /* Boton de completado */
@@ -42,7 +42,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  background-color: #031234;
+  background-color: #f0f0f0;
   padding: 0.7rem 1rem;
   border-radius: 0.6rem;
   border: 1px solid #15e7fa;
@@ -84,8 +84,8 @@
 }
 
 .gameForm button {
-  background: #155afa;
-  color: #bfe3f1;
+  background: #eafbff;
+  color: #232323;
   border: none;
   padding: 0.8rem;
   border-radius: 0.5rem;
@@ -95,6 +95,6 @@
 }
 
 .gameForm button:hover {
-  background: #2473fb;
+  background: #8ec4fa;
   box-shadow: 0 0 10px #15ebfa;
 }

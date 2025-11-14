@@ -2,7 +2,7 @@
 .listContainer {
     display: flex;
     flex-wrap: wrap;      
-    gap: 10px;            
+    gap: 15px;            
     padding: 20px;
     justify-content: center;
 }
@@ -10,13 +10,17 @@
 /* Tarjetas */
 .juegoCard {
     width: 200px;
-    height: auto;
+    height: 250px; 
     background: white;
     border-radius: 10px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-    overflow: hidden;
+    overflow: hidden; 
     text-align: center;
     transition: transform 0.3s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .juegoCard:hover {
@@ -26,14 +30,102 @@
 /* Imagen de portada */
 .imageCard {
     width: 100%;
-    height: auto;
+    height: 150px;
     object-fit: cover;
+    padding: 0;
+    border-radius: 5px 5px 0 0;
 }
 
 /* Nombre del juego */
 .cardTitle {
-    padding: 5px;
-    font-size: 1.1rem;
+    padding: 5px 5px 0 5px; 
+    font-size: 1rem;
     color: #333;
     font-weight: bold;
+    text-transform: uppercase;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cardActions {
+    padding: 8px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Estilos para el formulario de edición */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.editFormModal {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    max-width: 350px; 
+    width: 90%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/*Botones del formulario de edición */
+.editButton {
+     display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #4A90E2;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+    width: 80%;
+    margin: 0; 
+}
+.editButton:hover {
+    background: #357ABD;
+}
+
+#cancelButton{
+    background: #e74c3c;
+}
+
+#cancelButton:hover{
+    background: #fd513e;
+}
+
+/*Vista de detalles*/
+.detailModal {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px; 
+    width: 90%; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    max-height: 90vh; 
+    overflow-y: auto; 
+    text-align: left;
+}
+
+.detailModal h3 {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 15px;
 }

@@ -1,4 +1,4 @@
-import './components/body.css';
+import './components/inicio.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Inicio from './components/Inicio';
 import Header from './components/header';
@@ -12,7 +12,7 @@ function App() {
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<TagMain />} />
+        <Route path="/" element={<Inicio />} />
         <Route path="/agregar-juego" element={<GameForm />} />
         <Route path="/juegos" element={<List />} />
       </Routes>

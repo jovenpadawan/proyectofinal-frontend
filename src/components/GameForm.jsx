@@ -59,14 +59,14 @@ function GameForm() {
       <form className="gameForm" onSubmit={handleSubmit}>
         <h2>Agregar nuevo juego</h2>
 
-        <input type="text" name="titulo" placeholder="Título del juego" value={formData.titulo} onChange={handleChange} required />
+        <input type="text" id='tituloCase' name="titulo" placeholder="Título del juego" value={formData.titulo} onChange={handleChange} required />
         <input type="text" name="genero" placeholder="Género" value={formData.genero} onChange={handleChange} required />
         <input type="text" name="plataforma" placeholder="Plataforma" value={formData.plataforma} onChange={handleChange} required />
-        <input type="number" name="anoLanzamiento" placeholder="Año de lanzamiento" value={formData.anoLanzamiento} onChange={handleChange} />
-        <input type="text" name="desarrollador" placeholder="Desarrollador" value={formData.desarrollador} onChange={handleChange} />
-        <textarea name="descripcion" placeholder="Descripción del juego" value={formData.descripcion} onChange={handleChange}></textarea>
+        <input type="number" name="anoLanzamiento" placeholder="Año de lanzamiento" value={formData.anoLanzamiento} onChange={handleChange} required/>
+        <input type="text" name="desarrollador" placeholder="Desarrollador" value={formData.desarrollador} onChange={handleChange} required />
+        <textarea name="descripcion" placeholder="Descripción del juego" value={formData.descripcion} onChange={handleChange} required></textarea>
 
-        <input type="text" name="imagenPortada" placeholder="URL de la imagen del juego" value={formData.imagenPortada} onChange={handleChange} />
+        <input type="text" name="imagenPortada" placeholder="URL de la imagen del juego" value={formData.imagenPortada} onChange={handleChange} required/>
 
         <div className="toggleContainer">
           <span>¿Ya completaste este juego?</span>
