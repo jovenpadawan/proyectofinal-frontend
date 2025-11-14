@@ -2,7 +2,6 @@ import './components/inicio.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Inicio from './components/Inicio';
 import Header from './components/header';
-import TagMain from './components/TagMain';
 import GameForm from './components/GameForm';
 import List from './components/List'
 
