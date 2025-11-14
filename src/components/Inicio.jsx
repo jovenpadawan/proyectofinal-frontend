@@ -4,7 +4,7 @@ import TagMain from "./TagMain"
 
 function Inicio() {
     return (
-        <TagMain />
+         <img src={logo}></img>
     )
 }
 
