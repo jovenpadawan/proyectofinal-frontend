@@ -27,19 +27,18 @@
     transform: scale(1.05);
 }
 
-/* Imagen de portada */
+/* Imagen de portada de tarjeta */
 .imageCard {
     width: 100%;
-    height: 150px;
-    object-fit: cover;
+    height: 140px; 
+    object-fit: cover; 
     padding: 0;
-    border-radius: 5px 5px 0 0;
 }
 
 /* Nombre del juego */
 .cardTitle {
     padding: 5px 5px 0 5px; 
-    font-size: 1rem;
+    font-size: 1rem; 
     color: #333;
     font-weight: bold;
     text-transform: uppercase;
@@ -47,16 +46,73 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+/* Contenedor de botones en la tarjeta */
 .cardActions {
-    padding: 8px 5px;
+    padding: 8px 5px; 
     display: flex;
+    flex-direction: column; 
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    gap: 5px;
+    gap: 5px; 
 }
 
-/* Estilos para el formulario de edición */
+/* Botones */
+.editButton {
+    background: #4A90E2;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+    width: 80%;
+    margin: 0; 
+}
+
+.editButton:hover {
+    background: #357ABD;
+}
+
+.cancelButton {
+    background-color: #e74c3c; 
+    color: white;
+    border: none;
+    padding: 0.7rem;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    transition: background-color 0.3s;
+}
+
+.cancelButton:hover {
+    background-color: #c0392b; 
+}
+
+.deleteButton {
+    background-color: #e74c3c; 
+    color: white;
+    border: none;
+    padding: 0.7rem; /* Ajustado para coincidir con cancelButton */
+    border-radius: 0.6rem; /* Ajustado para coincidir con cancelButton */
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 0.5rem; /* Ajustado para coincidir con cancelButton */
+    transition: background-color 0.3s;
+}
+
+.deleteButton:hover {
+    background-color: #c0392b; 
+}
+
+.detailModal .editButton {
+    margin-top: 20px;
+    width: 50%;
+}
+
+/* Estilos para el overlay del modal */
 .modalOverlay {
     position: fixed;
     top: 0;
@@ -70,62 +126,63 @@
     z-index: 1000;
 }
 
+/* Formulario de Edición */
 .editFormModal {
     background: white;
     padding: 15px;
     border-radius: 10px;
     max-width: 350px; 
-    width: 90%;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    z-index: 1001;
-    max-height: 90vh;
-    overflow-y: auto;
-}
-
-/*Botones del formulario de edición */
-.editButton {
-     display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #4A90E2;
-    color: white;
-    border: none;
-    padding: 6px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: background-color 0.3s;
-    width: 80%;
-    margin: 0; 
-}
-.editButton:hover {
-    background: #357ABD;
-}
-
-#cancelButton{
-    background: #e74c3c;
-}
-
-#cancelButton:hover{
-    background: #fd513e;
-}
-
-/*Vista de detalles*/
-.detailModal {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 400px; 
     width: 90%; 
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     z-index: 1001;
     max-height: 90vh; 
     overflow-y: auto; 
+}
+
+/* Pantalla de detalles */
+.detailModal {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px; 
+    width: 90%; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    max-height: 95%; 
+    overflow-y: auto; 
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
 }
 
 .detailModal h3 {
     text-align: center;
     margin-top: 5px;
     margin-bottom: 15px;
+}
+
+.detailModalImage {
+    width: 100%;
+    height: 150px; 
+    object-fit: cover; 
+    border-radius: 5px 5px 0 0;
+}
+
+.detailModal p {
+    align-self: flex-start;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+/* Caja de descripción */
+.detailDescriptionBox {
+    white-space: pre-wrap;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
 }

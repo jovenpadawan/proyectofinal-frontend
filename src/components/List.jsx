@@ -7,9 +7,8 @@ function List() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [editingGame, setEditingGame] = useState(null);
-    const [viewingGame, setViewingGame] = useState(null); // Nuevo estado para ver detalles
+    const [viewingGame, setViewingGame] = useState(null);
     const [formData, setFormData] = useState({});
-    const [updateMessage, setUpdateMessage] = useState("");
 
     const fetchJuegos = () => {
         setLoading(true);
@@ -35,7 +34,6 @@ function List() {
     const startEditing = (juego) => {
         setEditingGame(juego);
         setFormData(juego);
-        setUpdateMessage("");
     };
 
     const handleFormChange = (e) => {
@@ -57,7 +55,7 @@ function List() {
         e.preventDefault();
         
         if (!editingGame || !editingGame._id) {
-            setUpdateMessage("Error: Juego no seleccionado para actualizar.");
+            alert("Error: Juego no seleccionado para actualizar.");
             return;
         }
 
@@ -75,16 +73,47 @@ function List() {
 
             if (!res.ok) {
                 const errorText = await res.text();
-                setUpdateMessage(`Error al actualizar: ${errorText || res.statusText}`);
+                alert(`Error al actualizar: ${errorText || res.statusText}`);
                 return;
             }
             
+            alert("Juego actualizado correctamente.");
             fetchJuegos();
             setEditingGame(null);
-            setUpdateMessage("Juego actualizado correctamente.");
+
 
         } catch (error) {
-            setUpdateMessage("Error de conexión con el servidor");
+            alert("Error de conexión con el servidor");
+        }
+    }
+
+    const handleDelete = async () => {
+        if (!editingGame || !editingGame._id) {
+            alert("Error: Juego no seleccionado para eliminar.");
+            return;
+        }
+
+        const confirmDelete = window.confirm(`¿Estás seguro de que quieres eliminar el juego: "${editingGame.titulo}"?`);
+        
+        if (confirmDelete) {
+            try {
+                const res = await fetch(`http://localhost:3000/api/juegos/${editingGame._id}`, {
+                    method: "DELETE",
+                });
+    
+                if (!res.ok) {
+                    const errorText = await res.text();
+                    alert(`Error al eliminar el juego: ${errorText || res.statusText}`);
+                    return;
+                }
+                
+                alert("Juego eliminado correctamente.");
+                fetchJuegos();
+                setEditingGame(null);
+    
+            } catch (error) {
+                alert("Error de conexión con el servidor al intentar eliminar.");
+            }
         }
     }
 
@@ -95,7 +124,7 @@ function List() {
 
     return (
         <>
-            {/* Formulario de Edición */}
+            {/* Modal de Edición */}
             {editingGame && (
                 <div className="modalOverlay">
                     <div className="editFormModal">
@@ -126,25 +155,35 @@ function List() {
                             </div>
                             
                             <button type="submit">Guardar Cambios</button>
-                            <button type="button" id="cancelButton" onClick={() => setEditingGame(null)}>Cancelar</button>
+                            <button type="button" className="cancelButton" onClick={() => setEditingGame(null)}>Cancelar</button>
+                            <button 
+                                type="button" 
+                                className="deleteButton" 
+                                onClick={handleDelete}>
+                                Eliminar Juego
+                            </button>
                         </form>
                     </div>
                 </div>
             )}
 
-            {/* Form de Ver Detalles */}
+            {/* Pantalla de detalles */}
             {viewingGame && (
                 <div className="modalOverlay">
                     <div className="detailModal">
-                        <img src={viewingGame.imagenPortada || '/fallback.jpg'} alt={viewingGame.titulo} style={{width: '100%', height: '150px', objectFit: 'cover', borderRadius: '5px 5px 0 0'}} />
-                        <h3> {viewingGame.titulo}</h3>
+                        <img 
+                            src={viewingGame.imagenPortada || '/fallback.jpg'} 
+                            alt={viewingGame.titulo} 
+                            className="detailModalImage"
+                        />
+                        <h3>{viewingGame.titulo}</h3>
                         <p><strong>Género:</strong> {viewingGame.genero}</p>
                         <p><strong>Plataforma:</strong> {viewingGame.plataforma}</p>
                         <p><strong>Año de Lanzamiento:</strong> {viewingGame.anoLanzamiento}</p>
                         <p><strong>Desarrollador:</strong> {viewingGame.desarrollador}</p>
                         <p><strong>Completado:</strong> {viewingGame.completado ? '✅' : '❌'}</p>
                         <p><strong>Descripción:</strong></p>
-                        <p style={{whiteSpace: 'pre-wrap', maxHeight: '100px', overflowY: 'auto', border: '1px solid #ddd', padding: '10px', borderRadius: '5px'}}>{viewingGame.descripcion}</p>
+                        <p className="detailDescriptionBox">{viewingGame.descripcion}</p>
                         <button className="editButton" onClick={() => setViewingGame(null)}>Cerrar</button>
                     </div>
                 </div>
@@ -161,24 +200,20 @@ function List() {
                         />
                         <h3 className="cardTitle">{juego.titulo}</h3>
                         <div className="cardActions">
-                        {/*Botones de accion*/}
                             <button 
                                 className="editButton" 
                                 onClick={() => setViewingGame(juego)}>
                                 Ver Más
                             </button>
-                         
                             <button 
                                 className="editButton" 
                                 onClick={() => startEditing(juego)}>
                                 Editar
                             </button>
-
                         </div>
                     </div>
                 ))}
             </div>
-            {updateMessage && !editingGame && <p style={{textAlign: "center", fontWeight: "bold", color: "green"}}> {updateMessage}</p>}
         </>
     );
 }
