@@ -19,6 +19,12 @@
   text-shadow: 0 0 10px #298494;
 }
 
+.gameForm h3 {
+  text-align: center;
+  color: #23222a;
+  text-shadow: 0 0 10px #298494;
+}
+
 .gameForm input,
 .gameForm textarea {
   background-color: #f0f0f0;

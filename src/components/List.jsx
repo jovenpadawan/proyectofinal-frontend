@@ -155,10 +155,10 @@ function List() {
                             </div>
                             
                             <button type="submit">Guardar Cambios</button>
-                            <button type="button" className="cancelButton" onClick={() => setEditingGame(null)}>Cancelar</button>
+                            <button type="button" id="cancelButton" onClick={() => setEditingGame(null)}>Cancelar</button>
                             <button 
                                 type="button" 
-                                className="deleteButton" 
+                                id="deleteButton" 
                                 onClick={handleDelete}>
                                 Eliminar Juego
                             </button>
