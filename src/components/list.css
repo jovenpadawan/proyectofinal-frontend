@@ -27,6 +27,12 @@
     transform: scale(1.05);
 }
 
+.toggleCardContainer .toggleLabel {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #4A90E2; 
+}
+
 /* Imagen de portada de tarjeta */
 .imageCard {
     width: 100%;

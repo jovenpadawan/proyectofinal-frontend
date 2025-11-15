@@ -31,6 +31,37 @@ function List() {
         fetchJuegos();
     }, []);
     
+    // Función para alternar el estado 'completado' desde la tarjeta (Nuevo)
+    const handleToggleCompleted = async (juego) => {
+        const newCompletedStatus = !juego.completado;
+        const juegoId = juego._id; // Usamos _id para la ruta de la API
+
+        try {
+            const res = await fetch(`http://localhost:3000/api/juegos/${juegoId}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ completado: newCompletedStatus }), // Solo enviamos el campo 'completado'
+            });
+
+            if (!res.ok) {
+                const errorText = await res.text();
+                alert(`Error al actualizar el estado: ${errorText || res.statusText}`);
+                return;
+            }
+            
+            // Actualizar el estado local para reflejar el cambio inmediatamente
+            setJuegos(prevJuegos => 
+                prevJuegos.map(j => 
+                    j._id === juegoId ? { ...j, completado: newCompletedStatus } : j
+                )
+            );
+            
+        } catch (error) {
+            alert("Error de conexión con el servidor al intentar cambiar el estado.");
+        }
+    };
+
+
     const startEditing = (juego) => {
         setEditingGame(juego);
         setFormData(juego);
@@ -116,6 +147,13 @@ function List() {
             }
         }
     }
+    
+    // Función para manejar el cierre del modal al hacer clic en el fondo
+    const handleCloseModal = (e) => {
+        if (e.target.className === 'modalOverlay') {
+            setViewingGame(null);
+        }
+    };
 
 
     if (loading) return <div className="listContainer">Cargando juegos...</div>;
@@ -124,7 +162,7 @@ function List() {
 
     return (
         <>
-            {/* Modal de Edición */}
+            {/* Formulario de Edición */}
             {editingGame && (
                 <div className="modalOverlay">
                     <div className="editFormModal">
@@ -167,9 +205,9 @@ function List() {
                 </div>
             )}
 
-            {/* Pantalla de detalles */}
+            {/* Ver Detalles */}
             {viewingGame && (
-                <div className="modalOverlay">
+                <div className="modalOverlay" onClick={handleCloseModal}>
                     <div className="detailModal">
                         <img 
                             src={viewingGame.imagenPortada || '/fallback.jpg'} 
@@ -183,6 +221,7 @@ function List() {
                         <p><strong>Desarrollador:</strong> {viewingGame.desarrollador}</p>
                         <p><strong>Completado:</strong> {viewingGame.completado ? '✅' : '❌'}</p>
                         <p><strong>Descripción:</strong></p>
+                   
                         <p className="detailDescriptionBox">{viewingGame.descripcion}</p>
                         <button className="editButton" onClick={() => setViewingGame(null)}>Cerrar</button>
                     </div>
@@ -200,6 +239,21 @@ function List() {
                         />
                         <h3 className="cardTitle">{juego.titulo}</h3>
                         <div className="cardActions">
+            
+                            <div className="toggleCardContainer">
+                                <span className="toggleLabel">Completado:</span>
+                                <div
+                                    className={`toggleSwitch ${juego.completado ? "active" : ""}`}
+                                    onClick={() => handleToggleCompleted(juego)}
+                                    role="button"
+                                    tabIndex={0}
+                                    onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") handleToggleCompleted(juego); }}
+                                    aria-pressed={juego.completado}
+                                >
+                                    <div className="slider"></div>
+                                </div>
+                            </div>
+                            
                             <button 
                                 className="editButton" 
                                 onClick={() => setViewingGame(juego)}>
@@ -210,19 +264,6 @@ function List() {
                                 onClick={() => startEditing(juego)}>
                                 Editar
                             </button>
-                            <div className="toggleListContainer">
-                                <span>¿Lo completaste?</span>
-                                <div
-                                    className={`toggleSwitch ${formData.completado ? "active" : ""}`}
-                                    onClick={handleToggle}
-                                    role="button"
-                                    tabIndex={0}
-                                    onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") handleToggle(); }}
-                                    aria-pressed={formData.completado}
-                                >
-                                    <div className="slider"></div>
-                                </div>
-                                </div>
                         </div>
                     </div>
                 ))}
