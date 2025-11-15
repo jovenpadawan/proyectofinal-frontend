@@ -210,6 +210,19 @@ function List() {
                                 onClick={() => startEditing(juego)}>
                                 Editar
                             </button>
+                            <div className="toggleListContainer">
+                                <span>¿Lo completaste?</span>
+                                <div
+                                    className={`toggleSwitch ${formData.completado ? "active" : ""}`}
+                                    onClick={handleToggle}
+                                    role="button"
+                                    tabIndex={0}
+                                    onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") handleToggle(); }}
+                                    aria-pressed={formData.completado}
+                                >
+                                    <div className="slider"></div>
+                                </div>
+                                </div>
                         </div>
                     </div>
                 ))}

@@ -104,3 +104,16 @@
   background: #8ec4fa;
   box-shadow: 0 0 10px #15ebfa;
 }
+
+/*Toggle de los juegos*/
+
+.toggleListContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background-color: #f0f0f0;
+  padding: 5px;
+  border-radius: 0.6rem;
+  border: 1px solid #15e7fa;
+}

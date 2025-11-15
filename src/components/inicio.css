@@ -1,6 +1,6 @@
 html, body {
     margin: 0;
-    height: 200vh;
+    height: auto;
     background: linear-gradient(#fdfeff, #a6c8dd);
 }
 
