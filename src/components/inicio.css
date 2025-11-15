@@ -29,7 +29,7 @@ html, body {
 
 .titulo h2 {
     font-size: 80px;
-    color: #23222a; 
+    color: #2a6f8f;
     margin-bottom: 10px;
     text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5);
     animation: neonPulse 2.5s ease-in-out infinite alternate;
@@ -47,6 +47,6 @@ html, body {
 }
 .titulo p {
     font-size: 14px;
-    color: #333;
+    color: #263037;
     font-weight: 500;
 }
