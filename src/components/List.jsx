@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./list.css";
 import "./gameform.css"; 
+import Rating from './Rating';
 
 function List() {
     const [juegos, setJuegos] = useState([]);
@@ -9,6 +10,9 @@ function List() {
     const [editingGame, setEditingGame] = useState(null);
     const [viewingGame, setViewingGame] = useState(null);
     const [formData, setFormData] = useState({});
+    const [openRatingId, setOpenRatingId] = useState(null);
+
+    const [juegoRatings, setJuegoRatings] = useState({});
 
     const fetchJuegos = () => {
         setLoading(true);
@@ -31,16 +35,15 @@ function List() {
         fetchJuegos();
     }, []);
     
-    // Función para alternar el estado 'completado' desde la tarjeta (Nuevo)
     const handleToggleCompleted = async (juego) => {
         const newCompletedStatus = !juego.completado;
-        const juegoId = juego._id; // Usamos _id para la ruta de la API
+        const juegoId = juego._id; 
 
         try {
             const res = await fetch(`http://localhost:3000/api/juegos/${juegoId}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ completado: newCompletedStatus }), // Solo enviamos el campo 'completado'
+                body: JSON.stringify({ completado: newCompletedStatus }), 
             });
 
             if (!res.ok) {
@@ -48,8 +51,7 @@ function List() {
                 alert(`Error al actualizar el estado: ${errorText || res.statusText}`);
                 return;
             }
-            
-            // Actualizar el estado local para reflejar el cambio inmediatamente
+       
             setJuegos(prevJuegos => 
                 prevJuegos.map(j => 
                     j._id === juegoId ? { ...j, completado: newCompletedStatus } : j
@@ -60,6 +62,18 @@ function List() {
             alert("Error de conexión con el servidor al intentar cambiar el estado.");
         }
     };
+
+    const toggleRating = (id) => {
+        setOpenRatingId(openRatingId === id ? null : id);
+    };
+
+    const handleRate = async (gameId, ratingValue) => {
+        setJuegoRatings(prevRatings => ({
+            ...prevRatings,
+            [gameId]: ratingValue,
+        }));
+    }
+
 
 
     const startEditing = (juego) => {
@@ -148,7 +162,6 @@ function List() {
         }
     }
     
-    // Función para manejar el cierre del modal al hacer clic en el fondo
     const handleCloseModal = (e) => {
         if (e.target.className === 'modalOverlay') {
             setViewingGame(null);
@@ -264,6 +277,13 @@ function List() {
                                 onClick={() => startEditing(juego)}>
                                 Editar
                             </button>
+                            <Rating 
+                            gameId={juego._id}
+                            isOpen={openRatingId === juego._id}
+                            currentRating={juegoRatings[juego._id] || 0} 
+                            onToggle={toggleRating}
+                            onRate={handleRate} 
+                        />
                         </div>
                     </div>
                 ))}
