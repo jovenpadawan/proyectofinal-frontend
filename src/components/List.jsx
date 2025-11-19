@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./list.css";
 import "./gameform.css"; 
 import Rating from './Rating';
+import Review from './Review';
 
 function List() {
     const [juegos, setJuegos] = useState([]);
@@ -283,7 +284,10 @@ function List() {
                             currentRating={juegoRatings[juego._id] || 0} 
                             onToggle={toggleRating}
                             onRate={handleRate} 
-                        />
+                            />
+                            <button>
+                                <Review></Review>
+                            </button>
                         </div>
                     </div>
                 ))}

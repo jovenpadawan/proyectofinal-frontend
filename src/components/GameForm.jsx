@@ -5,12 +5,12 @@ function GameForm() {
   const [formData, setFormData] = useState({
     titulo: "",
     genero: "",
-    plataforma: "",
-    anoLanzamiento: "",
+    plataforma: "", 
+    anoLanzamiento: "", 
     desarrollador: "",
     descripcion: "",
     imagenPortada: "",
-    completado: false,
+    completado: false, 
   });
 
   const handleChange = (e) => {
